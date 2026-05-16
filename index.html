@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Lumine — Lüks Butik Otel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#09080a;--surface:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.07);--text:#f5f0e8;--muted:rgba(245,240,232,0.45);--gold:#c8a96e;--gold2:#e8cfa0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 5%;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(24px);background:rgba(9,8,10,0.8);border-bottom:1px solid var(--border);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:0.08em;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-links{display:flex;gap:2rem;align-items:center;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.83rem;font-weight:500;letter-spacing:0.05em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-res{padding:0.6rem 1.6rem;border:1px solid rgba(200,169,110,0.4);border-radius:4px;color:var(--gold);font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;background:transparent;transition:all 0.2s;}
+.nav-res:hover{background:rgba(200,169,110,0.08);}
+
+#hero{height:100vh;position:relative;display:flex;align-items:flex-end;padding:5rem 5%;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a1206 0%,#0d0b08 50%,#1a1510 100%);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,8,10,0.9) 0%,rgba(9,8,10,0.3) 60%,transparent 100%);}
+.hero-emojis{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);opacity:0.06;font-size:5rem;align-items:center;justify-items:center;}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.h-eyebrow{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--gold);letter-spacing:0.2em;margin-bottom:1.2rem;display:block;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:700;line-height:0.95;letter-spacing:-0.01em;margin-bottom:1.5rem;}
+h1 em{display:block;font-style:italic;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.h-p{color:var(--muted);font-size:1.05rem;line-height:1.75;max-width:480px;margin-bottom:2.5rem;}
+.h-btns{display:flex;gap:1rem;}
+.btn-gold{padding:1rem 2.4rem;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:4px;color:#09080a;font-weight:700;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(200,169,110,0.3);}
+.btn-out{padding:1rem 2.4rem;border:1px solid rgba(255,255,255,0.15);border-radius:4px;color:var(--text);font-size:0.85rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;background:transparent;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-out:hover{border-color:rgba(200,169,110,0.4);color:var(--gold);}
+.h-scroll{position:absolute;right:5%;bottom:3rem;writing-mode:vertical-rl;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);display:flex;align-items:center;gap:0.75rem;}
+.h-scroll::after{content:'';width:1px;height:60px;background:linear-gradient(to bottom,rgba(255,255,255,0.2),transparent);}
+
+#awards{padding:3rem 5%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;justify-content:center;gap:5rem;flex-wrap:wrap;}
+.award{display:flex;align-items:center;gap:0.75rem;color:var(--muted);font-size:0.82rem;}
+.award-icon{font-size:1.3rem;}
+.award strong{color:var(--text);}
+
+#odalar{padding:8rem 5%;max-width:1300px;margin:0 auto;}
+.sec-l{font-size:0.68rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.25em;font-weight:600;margin-bottom:0.6rem;}
+.sec-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:0.75rem;line-height:1.1;}
+.sec-h em{font-style:italic;color:var(--gold);}
+.sec-p{color:var(--muted);margin-bottom:4rem;line-height:1.7;max-width:500px;}
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.room-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.3s;}
+.room-card:hover{transform:translateY(-5px);border-color:rgba(200,169,110,0.2);box-shadow:0 24px 60px rgba(0,0,0,0.4);}
+.room-img{height:220px;display:flex;align-items:center;justify-content:center;font-size:5rem;background:linear-gradient(135deg,rgba(255,255,255,0.02),rgba(200,169,110,0.03));position:relative;}
+.room-badge{position:absolute;top:0.8rem;left:0.8rem;padding:0.3rem 0.8rem;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.25);border-radius:3px;font-size:0.65rem;color:var(--gold);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;}
+.room-info{padding:1.5rem;}
+.room-info h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;margin-bottom:0.3rem;}
+.room-info p{color:var(--muted);font-size:0.82rem;line-height:1.5;margin-bottom:1rem;}
+.room-features{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem;}
+.rf{font-size:0.7rem;color:var(--muted);display:flex;align-items:center;gap:0.3rem;}
+.room-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--border);}
+.room-price{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--gold);}
+.room-price span{font-size:0.75rem;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400;margin-left:0.2rem;}
+.room-btn{padding:0.5rem 1.2rem;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.25);border-radius:4px;color:var(--gold);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.room-btn:hover{background:rgba(200,169,110,0.2);}
+
+#amenities{padding:8rem 5%;border-top:1px solid var(--border);background:rgba(255,255,255,0.01);}
+#amenities .inner{max-width:1200px;margin:0 auto;}
+.am-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:4rem;}
+.am-card{padding:2rem;border:1px solid var(--border);border-radius:12px;text-align:center;transition:all 0.3s;}
+.am-card:hover{border-color:rgba(200,169,110,0.2);background:rgba(200,169,110,0.02);}
+.am-icon{font-size:2.5rem;margin-bottom:1rem;display:block;}
+.am-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;}
+.am-card p{color:var(--muted);font-size:0.8rem;line-height:1.6;}
+
+#rezervasyon{padding:8rem 5%;max-width:900px;margin:0 auto;text-align:center;}
+#rezervasyon h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:1rem;}
+#rezervasyon h2 em{font-style:italic;color:var(--gold);}
+#rezervasyon p{color:var(--muted);margin-bottom:3rem;line-height:1.7;}
+.res-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:3rem;}
+.res-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1rem;}
+.rg{display:flex;flex-direction:column;gap:0.4rem;}
+.rg.full{grid-column:1/-1;}
+.rg label{font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.12em;}
+.rg input,.rg select{padding:0.85rem 1rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.88rem;outline:none;transition:border-color 0.2s;font-family:'Inter',sans-serif;}
+.rg input:focus,.rg select:focus{border-color:rgba(200,169,110,0.4);}
+.rg select option{background:#1a1206;}
+.rg input::placeholder{color:var(--muted);}
+.res-btn{width:100%;padding:1rem;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:6px;color:#09080a;font-weight:700;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.res-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,169,110,0.3);}
+
+#reviews{padding:8rem 5%;border-top:1px solid var(--border);}
+#reviews .inner{max-width:1100px;margin:0 auto;}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem;}
+.rv{padding:2.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;}
+.rv-stars{color:var(--gold);font-size:0.85rem;letter-spacing:2px;margin-bottom:1.2rem;}
+.rv-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:1.5rem;}
+.rv-author{color:var(--muted);font-size:0.8rem;}
+.rv-author strong{color:var(--text);display:block;margin-bottom:0.1rem;}
+
+footer{padding:5rem 5% 3rem;border-top:1px solid var(--border);display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;}
+.fl{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.75rem;}
+.fp{color:var(--muted);font-size:0.85rem;line-height:1.7;}
+.fc h4{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.35);margin-bottom:1.2rem;}
+.fc a{display:block;color:var(--muted);text-decoration:none;font-size:0.83rem;margin-bottom:0.5rem;transition:color 0.2s;}
+.fc a:hover{color:var(--text);}
+.foot-b{padding:2rem 5%;border-top:1px solid var(--border);display:flex;justify-content:space-between;color:var(--muted);font-size:0.78rem;}
+#toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.3);backdrop-filter:blur(12px);border-radius:8px;padding:0.9rem 1.8rem;font-size:0.85rem;font-weight:600;color:var(--gold);z-index:600;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);}
+#toast.show{transform:translateX(-50%) translateY(0);}
+@media(max-width:900px){.rooms-grid{grid-template-columns:1fr;}.am-grid{grid-template-columns:1fr 1fr;}.rev-grid{grid-template-columns:1fr;}.res-row{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div id="toast"></div>
+<nav>
+  <div class="logo">Villa Lumine</div>
+  <div class="nav-links">
+    <a href="#odalar">Odalar</a>
+    <a href="#amenities">Olanaklar</a>
+    <a href="#reviews">Yorumlar</a>
+    <button class="nav-res" onclick="document.getElementById('rezervasyon').scrollIntoView({behavior:'smooth'})">Rezervasyon</button>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-emojis">🏔️🌊🌅🌿🍷🕯️🌙✨🛁🌺🫖🌴</div>
+  <div class="hero-content">
+    <span class="h-eyebrow">— Bodrum, Türkiye</span>
+    <h1>Lüksün<br><em>Yeni Tanımı</em></h1>
+    <p class="h-p">Ege'nin masmavi sularına nazır, nefes kesen manzaralar ve kişiselleştirilmiş hizmetle unutulmaz bir tatil deneyimi.</p>
+    <div class="h-btns">
+      <a href="#odalar" class="btn-gold">Odaları Keşfet</a>
+      <a href="#rezervasyon" class="btn-out">Rezervasyon</a>
+    </div>
+  </div>
+  <div class="h-scroll">Keşfet</div>
+</section>
+
+<section id="awards">
+  <div class="award"><span class="award-icon">🏆</span><div><strong>5 Yıldız</strong><br>Lüks Otel Ödülü 2024</div></div>
+  <div class="award"><span class="award-icon">🌿</span><div><strong>Yeşil Sertifika</strong><br>Çevre Dostu Otel</div></div>
+  <div class="award"><span class="award-icon">⭐</span><div><strong>9.6 / 10</strong><br>Booking.com Puanı</div></div>
+  <div class="award"><span class="award-icon">🍽️</span><div><strong>Michelin Tavsiye</strong><br>Restoran 2024</div></div>
+</section>
+
+<section id="odalar">
+  <p class="sec-l">Konaklama</p>
+  <h2 class="sec-h">Özenle Tasarlanmış <em>Odalar</em></h2>
+  <p class="sec-p">Her oda, misafirlerimizin maksimum konfor ve estetik deneyim yaşaması için özel olarak tasarlandı.</p>
+  <div class="rooms-grid">
+    <div class="room-card"><div class="room-img">🏠<div class="room-badge">En Popüler</div></div><div class="room-info"><h3>Deluxe Oda</h3><p>Deniz manzaralı, kral yataklı, özel balkon</p><div class="room-features"><span class="rf">👥 2 Kişi</span><span class="rf">📐 45m²</span><span class="rf">🌊 Deniz Manzarası</span><span class="rf">☀️ Balkon</span></div><div class="room-bottom"><div class="room-price">₺4.500<span>/gece</span></div><button class="room-btn" onclick="toast('🛎️ Deluxe Oda rezervasyonunuz işleme alındı!')">Rezerve Et</button></div></div></div>
+    <div class="room-card"><div class="room-img">🏰<div class="room-badge">Lüks</div></div><div class="room-info"><h3>Suite Oda</h3><p>Ayrı oturma odası, jakuzi, panoramik teras</p><div class="room-features"><span class="rf">👥 2 Kişi</span><span class="rf">📐 80m²</span><span class="rf">🌊 Panoramik</span><span class="rf">🛁 Jakuzi</span></div><div class="room-bottom"><div class="room-price">₺8.900<span>/gece</span></div><button class="room-btn" onclick="toast('🛎️ Suite rezervasyonunuz işleme alındı!')">Rezerve Et</button></div></div></div>
+    <div class="room-card"><div class="room-img">🌟<div class="room-badge">Premium</div></div><div class="room-info"><h3>Presidential Suite</h3><p>Özel havuz, butler hizmeti, tam ekipman</p><div class="room-features"><span class="rf">👥 4 Kişi</span><span class="rf">📐 150m²</span><span class="rf">🏊 Özel Havuz</span><span class="rf">🍽️ Butler</span></div><div class="room-bottom"><div class="room-price">₺18.000<span>/gece</span></div><button class="room-btn" onclick="toast('🛎️ Presidential Suite için arayacağız!')">Rezerve Et</button></div></div></div>
+  </div>
+</section>
+
+<section id="amenities">
+  <div class="inner">
+    <p class="sec-l" style="text-align:center">Otel Olanakları</p>
+    <h2 class="sec-h" style="text-align:center">Tüm <em>İhtiyaçlarınız</em> Burada</h2>
+    <div class="am-grid">
+      <div class="am-card"><span class="am-icon">🏊</span><h3>Infinity Pool</h3><p>Denize nazır sonsuzluk havuzu, 7/24 açık</p></div>
+      <div class="am-card"><span class="am-icon">🍽️</span><h3>Fine Dining</h3><p>Michelin tavsiyeli şef, taze Ege mutfağı</p></div>
+      <div class="am-card"><span class="am-icon">💆</span><h3>Spa & Wellness</h3><p>Türk hamamı, masaj, cilt bakım merkezleri</p></div>
+      <div class="am-card"><span class="am-icon">⛵</span><h3>Yat Turu</h3><p>Özel tekne turu, dalış, su sporları</p></div>
+      <div class="am-card"><span class="am-icon">🧘</span><h3>Yoga & Fitness</h3><p>Sabah yogası, tam donanımlı fitness salonu</p></div>
+      <div class="am-card"><span class="am-icon">🚗</span><h3>VIP Transfer</h3><p>Havalimanı karşılama, özel araç hizmeti</p></div>
+      <div class="am-card"><span class="am-icon">🎾</span><h3>Spor Alanları</h3><p>Tenis kortu, beach voleybol, su sporları</p></div>
+      <div class="am-card"><span class="am-icon">🍸</span><h3>Rooftop Bar</h3><p>Günbatımı kokteylleri, canlı müzik geceleri</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="rezervasyon">
+  <h2>Odanızı <em>Rezerve</em> Edin</h2>
+  <p>Hayalinizdeki tatil için bugün rezervasyon yapın.</p>
+  <div class="res-box">
+    <form onsubmit="submitRes(event)">
+      <div class="res-row">
+        <div class="rg"><label>Giriş Tarihi</label><input type="date" required></div>
+        <div class="rg"><label>Çıkış Tarihi</label><input type="date" required></div>
+        <div class="rg"><label>Yetişkin</label><select><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+        <div class="rg"><label>Çocuk</label><select><option>0</option><option>1</option><option>2</option></select></div>
+        <div class="rg"><label>Oda Tipi</label><select><option>Deluxe Oda</option><option>Suite Oda</option><option>Presidential Suite</option></select></div>
+        <div class="rg"><label>Ad Soyad</label><input type="text" placeholder="Adınız" required></div>
+        <div class="rg"><label>E-posta</label><input type="email" placeholder="mail@ornek.com" required></div>
+        <div class="rg"><label>Telefon</label><input type="tel" placeholder="+90 5XX XXX XX XX"></div>
+        <div class="rg full"><label>Özel İstek</label><input type="text" placeholder="Balayı, doğum günü, allerji..."></div>
+      </div>
+      <button type="submit" class="res-btn">Rezervasyon Talebi Gönder</button>
+    </form>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="inner">
+    <p class="sec-l" style="text-align:center">Misafir Yorumları</p>
+    <h2 class="sec-h" style="text-align:center">Onların <em>Deneyimleri</em></h2>
+    <div class="rev-grid">
+      <div class="rv"><div class="rv-stars">★ ★ ★ ★ ★</div><p class="rv-text">"Balayımız için daha mükemmel bir yer olamazdı. Her detay özenle düşünülmüş, personel son derece ilgili. Ömrümüzün en güzel haftasıydı."</p><div class="rv-author"><strong>Elif & Can Y.</strong>İstanbul, Türkiye</div></div>
+      <div class="rv"><div class="rv-stars">★ ★ ★ ★ ★</div><p class="rv-text">"Infinity pool'dan izlenen günbatımı, fine dining restoranın lezzetleri ve spa deneyimi... Kelimelerle anlatılamaz. Kesinlikle geri döneceğiz."</p><div class="rv-author"><strong>Thomas M.</strong>Berlin, Almanya</div></div>
+      <div class="rv"><div class="rv-stars">★ ★ ★ ★ ★</div><p class="rv-text">"Presidential Suite'e yerleştiğimizde özel havuzumuz ve butler hizmetimiz bizi karşıladı. Bu kaliteyi başka hiçbir yerde bulmak mümkün değil."</p><div class="rv-author"><strong>Sarah L.</strong>Dubai, BAE</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div><div class="fl">Villa Lumine</div><p class="fp">Bodrum'un kalbinde, Ege'ye nazır lüks butik otel. Kişiselleştirilmiş hizmet, unutulmaz deneyimler.</p><p class="fp" style="margin-top:0.75rem">📍 Yalıkavak, Bodrum | 📞 0252 444 77 88</p></div>
+  <div class="fc"><h4>Keşfet</h4><a href="#">Odalar & Suitler</a><a href="#">Restoran</a><a href="#">Spa</a><a href="#">Etkinlikler</a></div>
+  <div class="fc"><h4>Bilgi</h4><a href="#">Nasıl Gidilir</a><a href="#">SSS</a><a href="#">İptal Politikası</a><a href="#">İletişim</a></div>
+</footer>
+<div class="foot-b"><span>© 2025 Villa Lumine Butik Otel</span><span>Gizlilik · Çerezler</span></div>
+
+<script>
+function submitRes(e){e.preventDefault();toast('✅ Rezervasyon talebiniz alındı! 2 saat içinde dönüş yapacağız.');e.target.reset();}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+</script>
+</body>
+</html>
